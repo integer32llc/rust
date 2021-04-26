@@ -159,6 +159,7 @@ pub fn deprecation_in_effect(is_since_rustc_version: bool, since: Option<&str>) 
     true
 }
 
+// why not for everyone
 pub fn deprecation_suggestion(
     diag: &mut DiagnosticBuilder<'_>,
     kind: &str,

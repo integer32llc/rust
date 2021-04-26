@@ -744,6 +744,11 @@ where
                                     continue 'outer;
                                 }
                             }
+                            sym::suggestion => {
+                                if !get(mi, &mut suggestion) {
+                                    continue 'outer;
+                                }
+                            }
                             sym::note if sess.check_name(attr, sym::deprecated) => {
                                 if !get(mi, &mut note) {
                                     continue 'outer;
@@ -754,11 +759,6 @@ where
                                     continue 'outer;
                                 }
                             }
-                            sym::suggestion if sess.check_name(attr, sym::rustc_deprecated) => {
-                                if !get(mi, &mut suggestion) {
-                                    continue 'outer;
-                                }
-                            }
                             _ => {
                                 handle_errors(
                                     &sess.parse_sess,
@@ -766,7 +766,7 @@ where
                                     AttrError::UnknownMetaItem(
                                         pprust::path_to_string(&mi.path),
                                         if sess.check_name(attr, sym::deprecated) {
-                                            &["since", "note"]
+                                            &["since", "note", "suggestion"]
                                         } else {
                                             &["since", "reason", "suggestion"]
                                         },
@@ -789,10 +789,6 @@ where
                     }
                 }
             }
-        }
-
-        if suggestion.is_some() && sess.check_name(attr, sym::deprecated) {
-            unreachable!("only allowed on rustc_deprecated")
         }
 
         if sess.check_name(attr, sym::rustc_deprecated) {

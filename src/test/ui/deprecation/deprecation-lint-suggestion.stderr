@@ -1,0 +1,767 @@
+error: use of deprecated function `deprecation_suggestion::deprecated`: text
+  --> $DIR/deprecation-lint-suggestion.rs:19:9
+   |
+LL |         deprecated();
+   |         ^^^^^^^^^^ help: replace the use of the deprecated function: `replacement`
+   |
+note: the lint level is defined here
+  --> $DIR/deprecation-lint-suggestion.rs:6:9
+   |
+LL | #![deny(deprecated)]
+   |         ^^^^^^^^^^
+
+error: use of deprecated associated function `deprecation_suggestion::Trait::trait_deprecated`: text
+  --> $DIR/deprecation-lint-suggestion.rs:24:9
+   |
+LL |         Trait::trait_deprecated(&foo);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated associated function: `trait_replacement`
+
+error: use of deprecated associated function `deprecation_suggestion::Trait::trait_deprecated`: text
+  --> $DIR/deprecation-lint-suggestion.rs:26:9
+   |
+LL | ...   <Foo as Trait>::trait_deprecated(&foo);
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated associated function: `trait_replacement`
+
+error: use of deprecated function `deprecation_suggestion::deprecated_text`: text
+  --> $DIR/deprecation-lint-suggestion.rs:28:9
+   |
+LL |         deprecated_text();
+   |         ^^^^^^^^^^^^^^^ help: replace the use of the deprecated function: `replacement_text`
+
+error: use of deprecated associated function `deprecation_suggestion::Trait::trait_deprecated_text`: text
+  --> $DIR/deprecation-lint-suggestion.rs:33:9
+   |
+LL | ...   Trait::trait_deprecated_text(&foo);
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated associated function: `trait_replacement_text`
+
+error: use of deprecated associated function `deprecation_suggestion::Trait::trait_deprecated_text`: text
+  --> $DIR/deprecation-lint-suggestion.rs:35:9
+   |
+LL | ...   <Foo as Trait>::trait_deprecated_text(&foo);
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated associated function: `trait_replacement_text`
+
+error: use of deprecated struct `deprecation_suggestion::DeprecatedStruct`: text
+  --> $DIR/deprecation-lint-suggestion.rs:37:17
+   |
+LL |         let _ = DeprecatedStruct {
+   |                 ^^^^^^^^^^^^^^^^ help: replace the use of the deprecated struct: `ReplacementStruct`
+
+error: use of deprecated struct `deprecation_suggestion::DeprecatedUnitStruct`: text
+  --> $DIR/deprecation-lint-suggestion.rs:41:17
+   |
+LL |         let _ = DeprecatedUnitStruct;
+   |                 ^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated struct: `ReplacementUnitStruct`
+
+error: use of deprecated variant `deprecation_suggestion::Enum::DeprecatedVariant`: text
+  --> $DIR/deprecation-lint-suggestion.rs:43:17
+   |
+LL |         let _ = Enum::DeprecatedVariant;
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated variant: `ReplacementVariant`
+
+error: use of deprecated struct `deprecation_suggestion::DeprecatedTupleStruct`: text
+  --> $DIR/deprecation-lint-suggestion.rs:45:17
+   |
+LL |         let _ = DeprecatedTupleStruct (1);
+   |                 ^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated struct: `ReplacementTupleStruct`
+
+error: use of deprecated struct `deprecation_suggestion::nested::DeprecatedStruct`: text
+  --> $DIR/deprecation-lint-suggestion.rs:47:17
+   |
+LL |         let _ = nested::DeprecatedStruct {
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated struct: `ReplacementStruct`
+
+error: use of deprecated struct `deprecation_suggestion::nested::DeprecatedUnitStruct`: text
+  --> $DIR/deprecation-lint-suggestion.rs:51:17
+   |
+LL | ...   let _ = nested::DeprecatedUnitStruct;
+   |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated struct: `ReplacementUnitStruct`
+
+error: use of deprecated variant `deprecation_suggestion::nested::Enum::DeprecatedVariant`: text
+  --> $DIR/deprecation-lint-suggestion.rs:53:17
+   |
+LL | ...   let _ = nested::Enum::DeprecatedVariant;
+   |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated variant: `ReplacementVariant`
+
+error: use of deprecated struct `deprecation_suggestion::nested::DeprecatedTupleStruct`: text
+  --> $DIR/deprecation-lint-suggestion.rs:55:17
+   |
+LL | ...   let _ = nested::DeprecatedTupleStruct (1);
+   |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated struct: `ReplacementTupleStruct`
+
+error: use of deprecated function `deprecation_suggestion::deprecated_text`: text
+  --> $DIR/deprecation-lint-suggestion.rs:62:25
+   |
+LL |         macro_test_arg!(deprecated_text());
+   |                         ^^^^^^^^^^^^^^^ help: replace the use of the deprecated function: `replacement_text`
+
+error: use of deprecated function `deprecation_suggestion::deprecated_text`: text
+  --> $DIR/deprecation-lint-suggestion.rs:63:41
+   |
+LL | ...   macro_test_arg!(macro_test_arg!(deprecated_text()));
+   |                                       ^^^^^^^^^^^^^^^ help: replace the use of the deprecated function: `replacement_text`
+
+error: use of deprecated associated function `deprecation_suggestion::Trait::trait_deprecated`: text
+  --> $DIR/deprecation-lint-suggestion.rs:68:9
+   |
+LL |         Trait::trait_deprecated(&foo);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated associated function: `trait_replacement`
+
+error: use of deprecated associated function `deprecation_suggestion::Trait::trait_deprecated`: text
+  --> $DIR/deprecation-lint-suggestion.rs:70:9
+   |
+LL | ...   <Foo as Trait>::trait_deprecated(&foo);
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated associated function: `trait_replacement`
+
+error: use of deprecated associated function `deprecation_suggestion::Trait::trait_deprecated_text`: text
+  --> $DIR/deprecation-lint-suggestion.rs:72:9
+   |
+LL | ...   Trait::trait_deprecated_text(&foo);
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated associated function: `trait_replacement_text`
+
+error: use of deprecated associated function `deprecation_suggestion::Trait::trait_deprecated_text`: text
+  --> $DIR/deprecation-lint-suggestion.rs:74:9
+   |
+LL | ...   <Foo as Trait>::trait_deprecated_text(&foo);
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated associated function: `trait_replacement_text`
+
+error: use of deprecated trait `deprecation_suggestion::DeprecatedTrait`: text
+  --> $DIR/deprecation-lint-suggestion.rs:84:10
+   |
+LL |     impl DeprecatedTrait for S {}
+   |          ^^^^^^^^^^^^^^^
+
+error: use of deprecated trait `deprecation_suggestion::DeprecatedTrait`: text
+  --> $DIR/deprecation-lint-suggestion.rs:85:24
+   |
+LL |     trait LocalTrait : DeprecatedTrait { }
+   |                        ^^^^^^^^^^^^^^^
+
+error: use of deprecated struct `deprecation_suggestion::Deprecated`: text
+  --> $DIR/deprecation-lint-suggestion.rs:116:17
+   |
+LL |         let x = Deprecated {
+   |                 ^^^^^^^^^^ help: replace the use of the deprecated struct: `Replacement`
+
+error: use of deprecated struct `deprecation_suggestion::Deprecated`: text
+  --> $DIR/deprecation-lint-suggestion.rs:125:13
+   |
+LL |         let Deprecated {
+   |             ^^^^^^^^^^
+
+error: use of deprecated struct `deprecation_suggestion::Deprecated`: text
+  --> $DIR/deprecation-lint-suggestion.rs:131:13
+   |
+LL |         let Deprecated
+   |             ^^^^^^^^^^
+
+error: use of deprecated struct `deprecation_suggestion::Deprecated2`: text
+  --> $DIR/deprecation-lint-suggestion.rs:135:17
+   |
+LL |         let x = Deprecated2(1, 2, 3);
+   |                 ^^^^^^^^^^^ help: replace the use of the deprecated struct: `Replacement2`
+
+error: use of deprecated struct `deprecation_suggestion::Deprecated2`: text
+  --> $DIR/deprecation-lint-suggestion.rs:145:13
+   |
+LL |         let Deprecated2
+   |             ^^^^^^^^^^^
+
+error: use of deprecated struct `deprecation_suggestion::Deprecated2`: text
+  --> $DIR/deprecation-lint-suggestion.rs:154:13
+   |
+LL |         let Deprecated2
+   |             ^^^^^^^^^^^
+
+error: use of deprecated function `deprecation_suggestion::deprecated_mod::deprecated`: text
+  --> $DIR/deprecation-lint-suggestion.rs:165:9
+   |
+LL |         deprecated_mod::deprecated();
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated function: `replacement_mod`
+
+error: use of deprecated function `this_crate::deprecated`: text
+  --> $DIR/deprecation-lint-suggestion.rs:248:9
+   |
+LL |         deprecated();
+   |         ^^^^^^^^^^ help: replace the use of the deprecated function: `replacement`
+
+error: use of deprecated associated function `this_crate::Trait::trait_deprecated`: text
+  --> $DIR/deprecation-lint-suggestion.rs:253:9
+   |
+LL |         Trait::trait_deprecated(&foo);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated associated function: `trait_replacement`
+
+error: use of deprecated associated function `this_crate::Trait::trait_deprecated`: text
+  --> $DIR/deprecation-lint-suggestion.rs:255:9
+   |
+LL |         <Foo as Trait>::trait_deprecated(&foo);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated associated function: `trait_replacement`
+
+error: use of deprecated function `this_crate::deprecated_text`: text
+  --> $DIR/deprecation-lint-suggestion.rs:257:9
+   |
+LL |         deprecated_text();
+   |         ^^^^^^^^^^^^^^^ help: replace the use of the deprecated function: `replacement_text`
+
+error: use of deprecated associated function `this_crate::Trait::trait_deprecated_text`: text
+  --> $DIR/deprecation-lint-suggestion.rs:262:9
+   |
+LL |         Trait::trait_deprecated_text(&foo);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated associated function: `trait_replacement_text`
+
+error: use of deprecated associated function `this_crate::Trait::trait_deprecated_text`: text
+  --> $DIR/deprecation-lint-suggestion.rs:264:9
+   |
+LL | ...   <Foo as Trait>::trait_deprecated_text(&foo);
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated associated function: `trait_replacement_text`
+
+error: use of deprecated function `this_crate::deprecated_future`: text
+  --> $DIR/deprecation-lint-suggestion.rs:267:9
+   |
+LL |         deprecated_future();
+   |         ^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated function: `replacement_future`
+
+error: use of deprecated function `this_crate::deprecated_future_text`: text
+  --> $DIR/deprecation-lint-suggestion.rs:268:9
+   |
+LL |         deprecated_future_text();
+   |         ^^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated function: `replacement_future_text`
+
+error: use of deprecated struct `this_crate::DeprecatedStruct`: text
+  --> $DIR/deprecation-lint-suggestion.rs:270:17
+   |
+LL |         let _ = DeprecatedStruct {
+   |                 ^^^^^^^^^^^^^^^^ help: replace the use of the deprecated struct: `ReplacementStruct`
+
+error: use of deprecated unit struct `this_crate::DeprecatedUnitStruct`: text
+  --> $DIR/deprecation-lint-suggestion.rs:275:17
+   |
+LL |         let _ = DeprecatedUnitStruct;
+   |                 ^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated unit struct: `ReplacementUnitStruct`
+
+error: use of deprecated unit variant `this_crate::Enum::DeprecatedVariant`: text
+  --> $DIR/deprecation-lint-suggestion.rs:277:17
+   |
+LL |         let _ = Enum::DeprecatedVariant;
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated unit variant: `ReplacementVariant`
+
+error: use of deprecated tuple struct `this_crate::DeprecatedTupleStruct`: text
+  --> $DIR/deprecation-lint-suggestion.rs:279:17
+   |
+LL |         let _ = DeprecatedTupleStruct (1);
+   |                 ^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated tuple struct: `ReplacementTupleStruct`
+
+error: use of deprecated struct `this_crate::nested::DeprecatedStruct`: text
+  --> $DIR/deprecation-lint-suggestion.rs:281:17
+   |
+LL |         let _ = nested::DeprecatedStruct {
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated struct: `ReplacementStruct`
+
+error: use of deprecated unit struct `this_crate::nested::DeprecatedUnitStruct`: text
+  --> $DIR/deprecation-lint-suggestion.rs:286:17
+   |
+LL |         let _ = nested::DeprecatedUnitStruct;
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated unit struct: `ReplacementUnitStruct`
+
+error: use of deprecated unit variant `this_crate::nested::Enum::DeprecatedVariant`: text
+  --> $DIR/deprecation-lint-suggestion.rs:288:17
+   |
+LL | ...   let _ = nested::Enum::DeprecatedVariant;
+   |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated unit variant: `ReplacementVariant`
+
+error: use of deprecated tuple struct `this_crate::nested::DeprecatedTupleStruct`: text
+  --> $DIR/deprecation-lint-suggestion.rs:290:17
+   |
+LL | ...   let _ = nested::DeprecatedTupleStruct (1);
+   |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated tuple struct: `ReplacementTupleStruct`
+
+error: use of deprecated associated function `this_crate::Trait::trait_deprecated`: text
+  --> $DIR/deprecation-lint-suggestion.rs:295:9
+   |
+LL |         Trait::trait_deprecated(&foo);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated associated function: `trait_replacement`
+
+error: use of deprecated associated function `this_crate::Trait::trait_deprecated`: text
+  --> $DIR/deprecation-lint-suggestion.rs:297:9
+   |
+LL |         <Foo as Trait>::trait_deprecated(&foo);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated associated function: `trait_replacement`
+
+error: use of deprecated associated function `this_crate::Trait::trait_deprecated_text`: text
+  --> $DIR/deprecation-lint-suggestion.rs:299:9
+   |
+LL |         Trait::trait_deprecated_text(&foo);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated associated function: `trait_replacement_text`
+
+error: use of deprecated associated function `this_crate::Trait::trait_deprecated_text`: text
+  --> $DIR/deprecation-lint-suggestion.rs:301:9
+   |
+LL | ...   <Foo as Trait>::trait_deprecated_text(&foo);
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated associated function: `trait_replacement_text`
+
+error: use of deprecated function `this_crate::test_fn_closure_body::{closure#0}::bar`
+  --> $DIR/deprecation-lint-suggestion.rs:319:13
+   |
+LL |             bar();
+   |             ^^^
+
+error: use of deprecated trait `this_crate::DeprecatedTrait`: text
+  --> $DIR/deprecation-lint-suggestion.rs:338:10
+   |
+LL |     impl DeprecatedTrait for S { }
+   |          ^^^^^^^^^^^^^^^
+
+error: use of deprecated trait `this_crate::DeprecatedTrait`: text
+  --> $DIR/deprecation-lint-suggestion.rs:340:24
+   |
+LL |     trait LocalTrait : DeprecatedTrait { }
+   |                        ^^^^^^^^^^^^^^^
+
+error: use of deprecated struct `this_crate2::Deprecated`: text
+  --> $DIR/deprecation-lint-suggestion.rs:392:17
+   |
+LL |         let x = Deprecated {
+   |                 ^^^^^^^^^^ help: replace the use of the deprecated struct: `Replacement`
+
+error: use of deprecated struct `this_crate2::Deprecated`: text
+  --> $DIR/deprecation-lint-suggestion.rs:401:13
+   |
+LL |         let Deprecated {
+   |             ^^^^^^^^^^
+
+error: use of deprecated struct `this_crate2::Deprecated`: text
+  --> $DIR/deprecation-lint-suggestion.rs:407:13
+   |
+LL |         let Deprecated
+   |             ^^^^^^^^^^
+
+error: use of deprecated tuple struct `this_crate2::Deprecated2`: text
+  --> $DIR/deprecation-lint-suggestion.rs:412:17
+   |
+LL |         let x = Deprecated2(1, 2, 3);
+   |                 ^^^^^^^^^^^ help: replace the use of the deprecated tuple struct: `Replacement2`
+
+error: use of deprecated tuple struct `this_crate2::Deprecated2`: text
+  --> $DIR/deprecation-lint-suggestion.rs:422:13
+   |
+LL |         let Deprecated2
+   |             ^^^^^^^^^^^
+
+error: use of deprecated tuple struct `this_crate2::Deprecated2`: text
+  --> $DIR/deprecation-lint-suggestion.rs:431:13
+   |
+LL |         let Deprecated2
+   |             ^^^^^^^^^^^
+
+error: use of deprecated associated function `deprecation_suggestion::MethodTester::method_deprecated`: text
+  --> $DIR/deprecation-lint-suggestion.rs:20:13
+   |
+LL |         foo.method_deprecated();
+   |             ^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated associated function: `method_replacement`
+
+error: use of deprecated associated function `deprecation_suggestion::MethodTester::method_deprecated`: text
+  --> $DIR/deprecation-lint-suggestion.rs:21:9
+   |
+LL | ...   Foo::method_deprecated(&foo);
+   |       ^^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated associated function: `method_replacement`
+
+error: use of deprecated associated function `deprecation_suggestion::MethodTester::method_deprecated`: text
+  --> $DIR/deprecation-lint-suggestion.rs:22:9
+   |
+LL | ...   <Foo>::method_deprecated(&foo);
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated associated function: `method_replacement`
+
+error: use of deprecated associated function `deprecation_suggestion::Trait::trait_deprecated`: text
+  --> $DIR/deprecation-lint-suggestion.rs:23:13
+   |
+LL |         foo.trait_deprecated();
+   |             ^^^^^^^^^^^^^^^^ help: replace the use of the deprecated associated function: `trait_replacement`
+
+error: use of deprecated associated function `deprecation_suggestion::Trait::trait_deprecated`: text
+  --> $DIR/deprecation-lint-suggestion.rs:25:9
+   |
+LL |         <Foo>::trait_deprecated(&foo);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated associated function: `trait_replacement`
+
+error: use of deprecated associated function `deprecation_suggestion::MethodTester::method_deprecated_text`: text
+  --> $DIR/deprecation-lint-suggestion.rs:29:13
+   |
+LL | ...   foo.method_deprecated_text();
+   |           ^^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated associated function: `method_replacement_text`
+
+error: use of deprecated associated function `deprecation_suggestion::MethodTester::method_deprecated_text`: text
+  --> $DIR/deprecation-lint-suggestion.rs:30:9
+   |
+LL | ...   Foo::method_deprecated_text(&foo);
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated associated function: `method_replacement_text`
+
+error: use of deprecated associated function `deprecation_suggestion::MethodTester::method_deprecated_text`: text
+  --> $DIR/deprecation-lint-suggestion.rs:31:9
+   |
+LL | ...   <Foo>::method_deprecated_text(&foo);
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated associated function: `method_replacement_text`
+
+error: use of deprecated associated function `deprecation_suggestion::Trait::trait_deprecated_text`: text
+  --> $DIR/deprecation-lint-suggestion.rs:32:13
+   |
+LL | ...   foo.trait_deprecated_text();
+   |           ^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated associated function: `trait_replacement_text`
+
+error: use of deprecated associated function `deprecation_suggestion::Trait::trait_deprecated_text`: text
+  --> $DIR/deprecation-lint-suggestion.rs:34:9
+   |
+LL | ...   <Foo>::trait_deprecated_text(&foo);
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated associated function: `trait_replacement_text`
+
+error: use of deprecated field `deprecation_suggestion::DeprecatedStruct::i`: text
+  --> $DIR/deprecation-lint-suggestion.rs:38:13
+   |
+LL |             i: 0
+   |             ^^^^ help: replace the use of the deprecated field: `ReplacementStruct`
+
+error: use of deprecated field `deprecation_suggestion::nested::DeprecatedStruct::i`: text
+  --> $DIR/deprecation-lint-suggestion.rs:48:13
+   |
+LL |             i: 0
+   |             ^^^^ help: replace the use of the deprecated field: `ReplacementStruct`
+
+error: use of deprecated associated function `deprecation_suggestion::Trait::trait_deprecated`: text
+  --> $DIR/deprecation-lint-suggestion.rs:67:13
+   |
+LL |         foo.trait_deprecated();
+   |             ^^^^^^^^^^^^^^^^ help: replace the use of the deprecated associated function: `trait_replacement`
+
+error: use of deprecated associated function `deprecation_suggestion::Trait::trait_deprecated`: text
+  --> $DIR/deprecation-lint-suggestion.rs:69:9
+   |
+LL |         <Foo>::trait_deprecated(&foo);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated associated function: `trait_replacement`
+
+error: use of deprecated associated function `deprecation_suggestion::Trait::trait_deprecated_text`: text
+  --> $DIR/deprecation-lint-suggestion.rs:71:13
+   |
+LL | ...   foo.trait_deprecated_text();
+   |           ^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated associated function: `trait_replacement_text`
+
+error: use of deprecated associated function `deprecation_suggestion::Trait::trait_deprecated_text`: text
+  --> $DIR/deprecation-lint-suggestion.rs:73:9
+   |
+LL | ...   <Foo>::trait_deprecated_text(&foo);
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated associated function: `trait_replacement_text`
+
+error: use of deprecated associated function `deprecation_suggestion::Trait::trait_deprecated`: text
+  --> $DIR/deprecation-lint-suggestion.rs:78:13
+   |
+LL |         foo.trait_deprecated();
+   |             ^^^^^^^^^^^^^^^^ help: replace the use of the deprecated associated function: `trait_replacement`
+
+error: use of deprecated associated function `deprecation_suggestion::Trait::trait_deprecated_text`: text
+  --> $DIR/deprecation-lint-suggestion.rs:79:13
+   |
+LL | ...   foo.trait_deprecated_text();
+   |           ^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated associated function: `trait_replacement_text`
+
+error: use of deprecated field `deprecation_suggestion::Stable::override2`: text
+  --> $DIR/deprecation-lint-suggestion.rs:89:13
+   |
+LL |             override2: 3,
+   |             ^^^^^^^^^^^^ help: replace the use of the deprecated field: `replacement2`
+
+error[E0063]: missing field `replacement2` in initializer of `deprecation_suggestion::Stable`
+  --> $DIR/deprecation-lint-suggestion.rs:88:17
+   |
+LL |         let x = Stable {
+   |                 ^^^^^^ missing `replacement2`
+
+error: use of deprecated field `deprecation_suggestion::Stable::override2`: text
+  --> $DIR/deprecation-lint-suggestion.rs:93:17
+   |
+LL |         let _ = x.override2;
+   |                 ^^^^^^^^^^^ help: replace the use of the deprecated field: `replacement2`
+
+error: use of deprecated field `deprecation_suggestion::Stable::override2`: text
+  --> $DIR/deprecation-lint-suggestion.rs:97:13
+   |
+LL |             override2: _
+   |             ^^^^^^^^^^^^
+
+error[E0027]: pattern does not mention field `replacement2`
+  --> $DIR/deprecation-lint-suggestion.rs:96:13
+   |
+LL |           let Stable {
+   |  _____________^
+LL | |             override2: _
+LL | |
+LL | |         } = x;
+   | |_________^ missing field `replacement2`
+   |
+help: include the missing field in the pattern
+   |
+LL |             override2: _, replacement2 } = x;
+   |                         ^^^^^^^^^^^^^^^^
+help: if you don't care about this missing field, you can explicitly ignore it
+   |
+LL |             override2: _, .. } = x;
+   |                         ^^^^^^
+
+error: use of deprecated field `deprecation_suggestion::Stable2::2`: text
+  --> $DIR/deprecation-lint-suggestion.rs:105:17
+   |
+LL |         let _ = x.2;
+   |                 ^^^ help: replace the use of the deprecated field: `1`
+
+error: use of deprecated field `deprecation_suggestion::Stable2::2`: text
+  --> $DIR/deprecation-lint-suggestion.rs:110:20
+   |
+LL |                    _)
+   |                    ^
+
+error: use of deprecated field `deprecation_suggestion::Deprecated::inherit`: text
+  --> $DIR/deprecation-lint-suggestion.rs:118:13
+   |
+LL |             inherit: 1,
+   |             ^^^^^^^^^^ help: replace the use of the deprecated field: `Replacement`
+
+error: use of deprecated field `deprecation_suggestion::Deprecated::inherit`: text
+  --> $DIR/deprecation-lint-suggestion.rs:122:17
+   |
+LL |         let _ = x.inherit;
+   |                 ^^^^^^^^^ help: replace the use of the deprecated field: `Replacement`
+
+error: use of deprecated field `deprecation_suggestion::Deprecated::inherit`: text
+  --> $DIR/deprecation-lint-suggestion.rs:127:13
+   |
+LL |             inherit: _,
+   |             ^^^^^^^^^^
+
+error: use of deprecated field `deprecation_suggestion::Deprecated2::0`: text
+  --> $DIR/deprecation-lint-suggestion.rs:138:17
+   |
+LL |         let _ = x.0;
+   |                 ^^^ help: replace the use of the deprecated field: `Replacement2`
+
+error: use of deprecated field `deprecation_suggestion::Deprecated2::1`: text
+  --> $DIR/deprecation-lint-suggestion.rs:140:17
+   |
+LL |         let _ = x.1;
+   |                 ^^^ help: replace the use of the deprecated field: `Replacement2`
+
+error: use of deprecated field `deprecation_suggestion::Deprecated2::2`: text
+  --> $DIR/deprecation-lint-suggestion.rs:142:17
+   |
+LL |         let _ = x.2;
+   |                 ^^^ help: replace the use of the deprecated field: `Replacement2`
+
+error: use of deprecated field `deprecation_suggestion::Deprecated2::0`: text
+  --> $DIR/deprecation-lint-suggestion.rs:147:14
+   |
+LL |             (_,
+   |              ^
+
+error: use of deprecated field `deprecation_suggestion::Deprecated2::1`: text
+  --> $DIR/deprecation-lint-suggestion.rs:149:14
+   |
+LL |              _,
+   |              ^
+
+error: use of deprecated field `deprecation_suggestion::Deprecated2::2`: text
+  --> $DIR/deprecation-lint-suggestion.rs:151:14
+   |
+LL |              _)
+   |              ^
+
+error: use of deprecated associated function `this_crate::MethodTester::method_deprecated`: text
+  --> $DIR/deprecation-lint-suggestion.rs:249:13
+   |
+LL |         foo.method_deprecated();
+   |             ^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated associated function: `method_replacement`
+
+error: use of deprecated associated function `this_crate::MethodTester::method_deprecated`: text
+  --> $DIR/deprecation-lint-suggestion.rs:250:9
+   |
+LL |         Foo::method_deprecated(&foo);
+   |         ^^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated associated function: `method_replacement`
+
+error: use of deprecated associated function `this_crate::MethodTester::method_deprecated`: text
+  --> $DIR/deprecation-lint-suggestion.rs:251:9
+   |
+LL |         <Foo>::method_deprecated(&foo);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated associated function: `method_replacement`
+
+error: use of deprecated associated function `this_crate::Trait::trait_deprecated`: text
+  --> $DIR/deprecation-lint-suggestion.rs:252:13
+   |
+LL |         foo.trait_deprecated();
+   |             ^^^^^^^^^^^^^^^^ help: replace the use of the deprecated associated function: `trait_replacement`
+
+error: use of deprecated associated function `this_crate::Trait::trait_deprecated`: text
+  --> $DIR/deprecation-lint-suggestion.rs:254:9
+   |
+LL |         <Foo>::trait_deprecated(&foo);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated associated function: `trait_replacement`
+
+error: use of deprecated associated function `this_crate::MethodTester::method_deprecated_text`: text
+  --> $DIR/deprecation-lint-suggestion.rs:258:13
+   |
+LL | ...   foo.method_deprecated_text();
+   |           ^^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated associated function: `method_replacement_text`
+
+error: use of deprecated associated function `this_crate::MethodTester::method_deprecated_text`: text
+  --> $DIR/deprecation-lint-suggestion.rs:259:9
+   |
+LL | ...   Foo::method_deprecated_text(&foo);
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated associated function: `method_replacement_text`
+
+error: use of deprecated associated function `this_crate::MethodTester::method_deprecated_text`: text
+  --> $DIR/deprecation-lint-suggestion.rs:260:9
+   |
+LL | ...   <Foo>::method_deprecated_text(&foo);
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated associated function: `method_replacement_text`
+
+error: use of deprecated associated function `this_crate::Trait::trait_deprecated_text`: text
+  --> $DIR/deprecation-lint-suggestion.rs:261:13
+   |
+LL |         foo.trait_deprecated_text();
+   |             ^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated associated function: `trait_replacement_text`
+
+error: use of deprecated associated function `this_crate::Trait::trait_deprecated_text`: text
+  --> $DIR/deprecation-lint-suggestion.rs:263:9
+   |
+LL |         <Foo>::trait_deprecated_text(&foo);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated associated function: `trait_replacement_text`
+
+error: use of deprecated field `this_crate::DeprecatedStruct::i`: text
+  --> $DIR/deprecation-lint-suggestion.rs:272:13
+   |
+LL |             i: 0
+   |             ^^^^ help: replace the use of the deprecated field: `ReplacementStruct`
+
+error: use of deprecated field `this_crate::nested::DeprecatedStruct::i`: text
+  --> $DIR/deprecation-lint-suggestion.rs:283:13
+   |
+LL |             i: 0
+   |             ^^^^ help: replace the use of the deprecated field: `ReplacementStruct`
+
+error: use of deprecated associated function `this_crate::Trait::trait_deprecated`: text
+  --> $DIR/deprecation-lint-suggestion.rs:294:13
+   |
+LL |         foo.trait_deprecated();
+   |             ^^^^^^^^^^^^^^^^ help: replace the use of the deprecated associated function: `trait_replacement`
+
+error: use of deprecated associated function `this_crate::Trait::trait_deprecated`: text
+  --> $DIR/deprecation-lint-suggestion.rs:296:9
+   |
+LL |         <Foo>::trait_deprecated(&foo);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated associated function: `trait_replacement`
+
+error: use of deprecated associated function `this_crate::Trait::trait_deprecated_text`: text
+  --> $DIR/deprecation-lint-suggestion.rs:298:13
+   |
+LL |         foo.trait_deprecated_text();
+   |             ^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated associated function: `trait_replacement_text`
+
+error: use of deprecated associated function `this_crate::Trait::trait_deprecated_text`: text
+  --> $DIR/deprecation-lint-suggestion.rs:300:9
+   |
+LL |         <Foo>::trait_deprecated_text(&foo);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated associated function: `trait_replacement_text`
+
+error: use of deprecated associated function `this_crate::Trait::trait_deprecated`: text
+  --> $DIR/deprecation-lint-suggestion.rs:305:13
+   |
+LL |         foo.trait_deprecated();
+   |             ^^^^^^^^^^^^^^^^ help: replace the use of the deprecated associated function: `trait_replacement`
+
+error: use of deprecated associated function `this_crate::Trait::trait_deprecated_text`: text
+  --> $DIR/deprecation-lint-suggestion.rs:306:13
+   |
+LL |         foo.trait_deprecated_text();
+   |             ^^^^^^^^^^^^^^^^^^^^^ help: replace the use of the deprecated associated function: `trait_replacement_text`
+
+error: use of deprecated field `this_crate2::Stable::override2`: text
+  --> $DIR/deprecation-lint-suggestion.rs:365:13
+   |
+LL |             override2: 3,
+   |             ^^^^^^^^^^^^ help: replace the use of the deprecated field: `replacement2`
+
+error: use of deprecated field `this_crate2::Stable::override2`: text
+  --> $DIR/deprecation-lint-suggestion.rs:369:17
+   |
+LL |         let _ = x.override2;
+   |                 ^^^^^^^^^^^ help: replace the use of the deprecated field: `replacement2`
+
+error: use of deprecated field `this_crate2::Stable::override2`: text
+  --> $DIR/deprecation-lint-suggestion.rs:373:13
+   |
+LL |             override2: _
+   |             ^^^^^^^^^^^^
+
+error: use of deprecated field `this_crate2::Stable2::2`: text
+  --> $DIR/deprecation-lint-suggestion.rs:381:17
+   |
+LL |         let _ = x.2;
+   |                 ^^^ help: replace the use of the deprecated field: `1`
+
+error: use of deprecated field `this_crate2::Stable2::2`: text
+  --> $DIR/deprecation-lint-suggestion.rs:386:20
+   |
+LL |                    _)
+   |                    ^
+
+error: use of deprecated field `this_crate2::Deprecated::inherit`: text
+  --> $DIR/deprecation-lint-suggestion.rs:394:13
+   |
+LL |             inherit: 1,
+   |             ^^^^^^^^^^ help: replace the use of the deprecated field: `Replacement`
+
+error: use of deprecated field `this_crate2::Deprecated::inherit`: text
+  --> $DIR/deprecation-lint-suggestion.rs:398:17
+   |
+LL |         let _ = x.inherit;
+   |                 ^^^^^^^^^ help: replace the use of the deprecated field: `Replacement`
+
+error: use of deprecated field `this_crate2::Deprecated::inherit`: text
+  --> $DIR/deprecation-lint-suggestion.rs:403:13
+   |
+LL |             inherit: _,
+   |             ^^^^^^^^^^
+
+error: use of deprecated field `this_crate2::Deprecated2::0`: text
+  --> $DIR/deprecation-lint-suggestion.rs:415:17
+   |
+LL |         let _ = x.0;
+   |                 ^^^ help: replace the use of the deprecated field: `Replacement2`
+
+error: use of deprecated field `this_crate2::Deprecated2::1`: text
+  --> $DIR/deprecation-lint-suggestion.rs:417:17
+   |
+LL |         let _ = x.1;
+   |                 ^^^ help: replace the use of the deprecated field: `Replacement2`
+
+error: use of deprecated field `this_crate2::Deprecated2::2`: text
+  --> $DIR/deprecation-lint-suggestion.rs:419:17
+   |
+LL |         let _ = x.2;
+   |                 ^^^ help: replace the use of the deprecated field: `Replacement2`
+
+error: use of deprecated field `this_crate2::Deprecated2::0`: text
+  --> $DIR/deprecation-lint-suggestion.rs:424:14
+   |
+LL |             (_,
+   |              ^
+
+error: use of deprecated field `this_crate2::Deprecated2::1`: text
+  --> $DIR/deprecation-lint-suggestion.rs:426:14
+   |
+LL |              _,
+   |              ^
+
+error: use of deprecated field `this_crate2::Deprecated2::2`: text
+  --> $DIR/deprecation-lint-suggestion.rs:428:14
+   |
+LL |              _)
+   |              ^
+
+error: aborting due to 124 previous errors
+
+Some errors have detailed explanations: E0027, E0063.
+For more information about an error, try `rustc --explain E0027`.
