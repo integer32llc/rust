@@ -1,3 +1,5 @@
+// `suggestion` in `deprecated` attributes and automatic fixing thereof
+
 // aux-build:deprecation-suggestion.rs
 // run-rustfix
 
@@ -86,14 +88,16 @@ mod cross_crate {
         let x = Stable {
             replacement2,
             //~^ ERROR use of deprecated field `deprecation_suggestion::Stable::override2`: text
+            replacement2: 5,
         };
 
         let _ = replacement2;
         //~^ ERROR use of deprecated field `deprecation_suggestion::Stable::override2`: text
 
         let Stable {
-            override2: _
+            override2: _,
             //~^ ERROR use of deprecated field `deprecation_suggestion::Stable::override2`: text
+            ..
         } = x;
         // all fine
         let Stable { .. } = x;

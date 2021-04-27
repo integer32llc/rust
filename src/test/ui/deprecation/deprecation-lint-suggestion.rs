@@ -18,6 +18,7 @@ mod cross_crate {
 
         deprecated(); //~ ERROR use of deprecated function `deprecation_suggestion::deprecated`
         foo.method_deprecated(); //~ ERROR use of deprecated associated function `deprecation_suggestion::MethodTester::method_deprecated`
+        // the problem is the applied suggestion does s/Foo::method_deprecated/method_replacement/, not s/method_deprecated/method_replacement/, so the `Foo::` gets erroneously removed
         Foo::method_deprecated(&foo); //~ ERROR use of deprecated associated function `deprecation_suggestion::MethodTester::method_deprecated`
         <Foo>::method_deprecated(&foo); //~ ERROR use of deprecated associated function `deprecation_suggestion::MethodTester::method_deprecated`
         foo.trait_deprecated(); //~ ERROR use of deprecated associated function `deprecation_suggestion::Trait::trait_deprecated`
@@ -88,14 +89,16 @@ mod cross_crate {
         let x = Stable {
             override2: 3,
             //~^ ERROR use of deprecated field `deprecation_suggestion::Stable::override2`: text
+            replacement2: 5,
         };
 
         let _ = x.override2;
         //~^ ERROR use of deprecated field `deprecation_suggestion::Stable::override2`: text
 
         let Stable {
-            override2: _
+            override2: _,
             //~^ ERROR use of deprecated field `deprecation_suggestion::Stable::override2`: text
+            ..
         } = x;
         // all fine
         let Stable { .. } = x;

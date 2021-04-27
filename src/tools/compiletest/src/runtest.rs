@@ -3275,7 +3275,9 @@ impl<'test> TestCx<'test> {
                 },
             )
             .unwrap();
-            let fixed_code = apply_suggestions(&unfixed_code, &suggestions).unwrap_or_else(|_| {
+            dbg!(&suggestions);
+            let fixed_code = apply_suggestions(&unfixed_code, &suggestions).unwrap_or_else(|e| {
+                dbg!(&e);
                 panic!("failed to apply suggestions for {:?} with rustfix", self.testpaths.file)
             });
 
